@@ -502,6 +502,17 @@ case "${command[0]}" in
 			echo "$final" >> "./output/$FILE"
 		fi
 		;;
+	"get")
+		# Set variable(s) to letter.
+		# get/[var name],[value],[letter]/[var name],[value],[letter]/ ...
+		final="12"
+		i2=1
+		while ((i2 < ${#command[@]})); do
+			i2="$(($i2+1))"
+			final="${final}/${command[$(($i2-1))]}"
+		done
+		echo "$final" >> "./$FILE"
+		;;
 	"set")
 		# Set variable(s) to value(s).
 		# set/[var name],[value]/[var name],[value]/ ...
